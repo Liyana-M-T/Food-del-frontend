@@ -33,3 +33,64 @@
 .place-order .cart-total button{
     margin-top: 30px;
 }
+
+.payment-btn{
+  border: none;
+  color: white;
+  background-color: tomato;
+  width: max(15vw,200px);
+  padding: 12px 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .radio-option {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: #f8f9fa;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.3s ease;
+    min-width: 120px;
+  }
+  
+  .radio-option:hover {
+    border-color: tomato;
+  }
+  
+  .radio-option input[type="radio"] {
+    display: none; /* Hide default radio button */
+  }
+  
+  .radio-option input[type="radio"]:checked + label {
+    border-color:tomato;
+    color: tomato;
+    font-weight: bold;
+  }
+  
+  .radio-option label {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+  
+  

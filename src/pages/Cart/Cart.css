@@ -56,7 +56,7 @@
     flex: 1;
 }
 .cart-promocode p{
-    color: #555;
+    margin-top: 0px;
 }
 .cart-promocode-input{
     margin-top: 10px;

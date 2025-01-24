@@ -4,14 +4,14 @@ import Header from '../../Components/Header/Header'
 import ExploreMenu from '../../Components/ExploreMenu/ExploreMenu'
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay'
 import AppDownload from '../../components/AppDownload/AppDownload'
-const Home = () => {
-const[category,setCategory]=useState('All')
+const Home = ({ category, setCategory }) => {
+
 
   return (
     <div>
       <Header/>
       <ExploreMenu category={category} setCategory={setCategory}/>
-      <FoodDisplay  category={category}/>
+      <FoodDisplay  category={category} limit={12} currentPage={1}/>
       <AppDownload/>
     </div>
   )
