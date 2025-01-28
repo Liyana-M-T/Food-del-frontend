@@ -90,6 +90,15 @@ const Cart = () => {
               <p>Rs.{deliveryFee}</p>
             </div>
             <hr />
+            {discount > 0 && (
+              <>
+              <div className="cart-total-details">
+                <p>Discount </p>
+                <p>{discount}%</p>
+              </div>
+              <hr />
+              </>
+            )}
             <div className="cart-total-details">
               <b>Total</b>
               <b>Rs.{finalTotal}</b>

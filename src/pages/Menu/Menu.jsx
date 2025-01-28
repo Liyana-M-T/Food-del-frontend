@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
-import ExploreMenu from '../../Components/ExploreMenu/ExploreMenu';
-import FoodDisplay from '../../components/FoodDisplay/FoodDisplay';
+import React, { useState } from "react";
+import ExploreMenu from "../../Components/ExploreMenu/ExploreMenu";
+import FoodDisplay from "../../components/FoodDisplay/FoodDisplay";
+import TablePagination from "@mui/material/TablePagination";
 
 const Menu = ({ category, setCategory }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const [currentPage, setCurrentPage] = useState(0); // Material-UI pagination uses zero-based indexing
+  const [rowsPerPage, setRowsPerPage] = useState(25);
+
+  const handleChangePage = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setCurrentPage(0); // Reset to first page when rows per page change
   };
 
   return (
@@ -14,20 +21,17 @@ const Menu = ({ category, setCategory }) => {
       <ExploreMenu category={category} setCategory={setCategory} />
       <FoodDisplay
         category={category}
-        limit={25}
-        currentPage={currentPage} 
+        limit={rowsPerPage}
+        currentPage={currentPage + 1} // Convert zero-based index to 1-based
       />
-      <div className="pagination">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <button onClick={() => handlePageChange(currentPage + 1)}>
-          Next
-        </button>
-      </div>
+      <TablePagination
+        component="div"
+        count={100} // Replace with total item count
+        page={currentPage}
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </div>
   );
 };
