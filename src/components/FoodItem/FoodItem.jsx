@@ -7,6 +7,8 @@ const FoodItem = ({id,name,price,description,image}) => {
 
     const{cartItems,addToCart,removeFromCart,url} =useContext(StoreContext);
     
+    console.log(cartItems?.[id],"435");
+    
   return (
     <div className='food-item'>
       <div className="food-item-image-container">
@@ -21,6 +23,7 @@ const FoodItem = ({id,name,price,description,image}) => {
            <img onClick={()=>addToCart(id)} src={assets.add_icon_green} alt="" />
         </div>
         }
+        
       </div>
       <div className="food-item-info">
         <div className="food-item-name-rating">
@@ -30,7 +33,7 @@ const FoodItem = ({id,name,price,description,image}) => {
         <p className="food-item-desc">
             {description}
         </p>
-        <p className="food-item-price">${price}</p>
+        <p className="food-item-price">Rs.{price}</p>
       </div>
     </div>
   )

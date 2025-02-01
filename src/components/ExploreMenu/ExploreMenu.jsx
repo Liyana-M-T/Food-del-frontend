@@ -14,7 +14,6 @@ const ExploreMenu = ({category,setCategory}) => {
                 <p>{item.menu_name}</p>
                 </div>
             )
-            console.log(setCategory,"prev state");
         })}
       </div>
       <hr/>

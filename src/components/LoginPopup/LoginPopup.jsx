@@ -30,17 +30,19 @@ const LoginPopup = ({setShowLogin}) => {
         newUrl += "/api/user/register"
       }
 
-      const response = await axios.post(newUrl,data);
-
-      if(response.data.success){
-        setToken(response.data.token)
-        localStorage.setItem("token",response.data.token)
-        setShowLogin(false)
+      try {
+        const response = await axios.post(newUrl, data);
+      
+        if (response.data.success) {
+          setToken(response.data.token);
+          localStorage.setItem("token", response.data.token);
+          setShowLogin(false);
+        } else {
+          alert(response.data.message);
+        }
+      } catch (error) {
+        alert(error.response?.data?.message || "An error occurred");
       }
-      else{
-        alert(response.data.message)
-      }
-
     }
 
 

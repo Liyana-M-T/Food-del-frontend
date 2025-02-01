@@ -40,6 +40,10 @@ const Cart = () => {
   const totalAmount = getTotalCartAmount();
   const deliveryFee = totalAmount === 0 ? 0 : 20;
   const finalTotal = totalAmount + deliveryFee - (totalAmount * discount) / 100;
+  
+  const proceedToCheckout = () => {
+    navigate('/order', { state: { discount,totalAmount,deliveryFee,finalTotal } });
+  };
 
   return (
     <div className="cart">
@@ -63,9 +67,9 @@ const Cart = () => {
               <div key={item._id} className="cart-items-title cart-items-item">
                 <img src={url + "/images/" + item.image} alt="" />
                 <p>{item.name}</p>
-                <p>${item.price}</p>
+                <p>Rs.{item.price}</p>
                 <p>{cartItems[item._id]}</p>
-                <p>${item.price * cartItems[item._id]}</p>
+                <p>Rs.{item.price * cartItems[item._id]}</p>
                 <p onClick={() => removeFromCart(item._id)} className="cross">
                   x
                 </p>
@@ -104,7 +108,7 @@ const Cart = () => {
               <b>Rs.{finalTotal}</b>
             </div>
           </div>
-          <button onClick={() => navigate('/order')}>PROCEED TO CHECKOUT</button>
+          <button onClick={proceedToCheckout}>PROCEED TO CHECKOUT</button>
         </div>
 
         <div className="cart-promocode">
